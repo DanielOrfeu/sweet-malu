@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,6 @@
         }
     </script>
     <style>
-        /* Ajustes finos adicionais */
         .bg-cream-gradient {
             background: linear-gradient(180deg, #fdfbf7 0%, #fff7f7 100%);
         }
@@ -46,15 +45,15 @@
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brandPink/10 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
             <!-- Logo area -->
-            <a href="#" class="flex items-center gap-3">
-                <img src="Imagens/LogoDoceria.png" alt="Sweet Malu Logo" class="h-12 w-12 rounded-full border border-brandPink/30 object-cover">
-                <span class="font-serif text-2xl font-bold tracking-tight">Sweet <span class="text-brandPink">Malu</span></span>
+            <a href="#" class="flex items-center gap-2 sm:gap-3">
+                <img src="Imagens/LogoDoceria.png" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=150&auto=format&fit=crop&q=60'" alt="Sweet Malu Logo" class="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-brandPink/30 object-cover">
+                <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight">Sweet <span class="text-brandPink">Malu</span></span>
             </a>
             
-            <!-- Navigation -->
-            <nav class="hidden md:flex items-center gap-8 font-medium">
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium">
                 <a href="#inicio" class="hover:text-brandPink transition-colors">Início</a>
                 <a href="#diferenciais" class="hover:text-brandPink transition-colors">Diferenciais</a>
                 <a href="#cardapio" class="hover:text-brandPink transition-colors">Bolos</a>
@@ -62,9 +61,26 @@
                 <a href="#sobre" class="hover:text-brandPink transition-colors">Sobre</a>
             </nav>
 
-            <!-- CTA Button -->
-            <div>
-                <a href="#simulador" class="bg-brandPink hover:bg-brandPinkDark text-white font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-brandPink/20 transition-all transform hover:-translate-y-0.5">
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a href="#simulador" class="hidden sm:inline-block bg-brandPink hover:bg-brandPinkDark text-white font-semibold px-5 py-2 rounded-full shadow-lg shadow-brandPink/20 transition-all transform hover:-translate-y-0.5 text-sm">
+                    Encomendar agora
+                </a>
+                
+                <!-- Botão Menu Hamburguer (Mobile) -->
+                <button id="btn-menu-mobile" onclick="toggleMenuMobile()" class="md:hidden text-brandBrown hover:text-brandPink focus:outline-none p-1 text-2xl" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars" id="icone-menu"></i>
+                </button>
+            </div>
+
+            <!-- Menu Mobile Desdobrável -->
+            <div id="menu-mobile" class="hidden absolute top-full left-0 w-full bg-white border-b border-brandPink/10 shadow-lg flex flex-col p-6 gap-4 font-medium md:hidden animate-fade-in z-50">
+                <a href="#inicio" onclick="toggleMenuMobile()" class="py-2 border-b border-gray-50 hover:text-brandPink transition-colors">Início</a>
+                <a href="#diferenciais" onclick="toggleMenuMobile()" class="py-2 border-b border-gray-50 hover:text-brandPink transition-colors">Diferenciais</a>
+                <a href="#cardapio" onclick="toggleMenuMobile()" class="py-2 border-b border-gray-50 hover:text-brandPink transition-colors">Bolos</a>
+                <a href="#simulador" onclick="toggleMenuMobile()" class="py-2 border-b border-gray-50 hover:text-brandPink transition-colors">Monte seu Bolo</a>
+                <a href="#sobre" onclick="toggleMenuMobile()" class="py-2 hover:text-brandPink transition-colors">Sobre</a>
+                <a href="#simulador" onclick="toggleMenuMobile()" class="w-full bg-brandPink text-white text-center font-semibold py-3 rounded-xl mt-2 block">
                     Encomendar agora
                 </a>
             </div>
@@ -72,85 +88,85 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative py-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 overflow-hidden">
+    <section id="inicio" class="relative py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10 md:gap-12 overflow-hidden">
         <!-- Abstract background shape -->
-        <div class="absolute top-10 right-10 -z-10 w-96 h-96 bg-brandPink/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-10 right-10 -z-10 w-72 h-72 sm:w-96 sm:h-96 bg-brandPink/10 rounded-full blur-3xl"></div>
         
         <!-- Left Column: Copywriting -->
         <div class="flex-1 space-y-6 text-center md:text-left">
-            <span class="inline-block bg-brandPink/10 text-brandPinkDark font-semibold px-4 py-1.5 rounded-full text-sm uppercase tracking-wider">Doceria Artesanal</span>
-            <h1 class="font-serif text-5xl md:text-6xl font-bold leading-tight">
-                Seu momento <br>
+            <span class="inline-block bg-brandPink/10 text-brandPinkDark font-bold px-4 py-1.5 rounded-full text-xs sm:text-sm uppercase tracking-wider">Doceria Artesanal</span>
+            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Seu momento <br class="hidden sm:inline">
                 <span class="text-brandPink italic font-normal">mais doce</span> e feliz.
             </h1>
-            <p class="text-lg text-brandBrown/80 max-w-lg leading-relaxed">
+            <p class="text-base sm:text-lg text-brandBrown/80 max-w-lg mx-auto md:mx-0 leading-relaxed">
                 Bolos decorados e doces gourmet feitos com ingredientes de altíssima qualidade para transformar aniversários, casamentos e pequenas celebrações em momentos inesquecíveis.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                <a href="#cardapio" class="bg-brandBrown hover:bg-black text-white font-semibold px-8 py-4 rounded-full text-center shadow-lg shadow-brandBrown/10 transition-all">
+            <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-2">
+                <a href="#cardapio" class="bg-brandBrown hover:bg-black text-white font-semibold px-8 py-3.5 rounded-full text-center shadow-lg shadow-brandBrown/10 transition-all text-sm sm:text-base">
                     Ver Cardápio
                 </a>
-                <a href="#simulador" class="bg-white hover:bg-brandPink/5 text-brandBrown font-semibold px-8 py-4 rounded-full text-center border-2 border-brandPink/20 hover:border-brandPink transition-all">
+                <a href="#simulador" class="bg-white hover:bg-brandPink/5 text-brandBrown font-semibold px-8 py-3.5 rounded-full text-center border-2 border-brandPink/20 hover:border-brandPink transition-all text-sm sm:text-base">
                     Simular Pedido
                 </a>
             </div>
         </div>
 
         <!-- Right Column: Logo/Visual representation of Malu -->
-        <div class="flex-1 flex justify-center relative">
-            <div class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-8 border-white shadow-2xl bg-brandCream">
-                <!-- Visual center: using the recreated brand mascot -->
-                <img src="Imagens/LogoDoceria.png" alt="Doceira Malu com Bolo" class="w-full h-full object-cover">
+        <div class="flex-1 flex justify-center relative w-full max-w-xs sm:max-w-md md:max-w-none">
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl bg-brandCream">
+                <!-- Mascot image with robust fallback illustration if local file fails -->
+                <img src="Imagens/LogoDoceria.png" onerror="this.src='https://images.unsplash.com/photo-1586985289688-ca9cf4993ec0?w=600&auto=format&fit=crop&q=80'" alt="Doceira Malu com Bolo" class="w-full h-full object-cover">
             </div>
             <!-- Decorative badge -->
-            <div class="absolute -bottom-4 right-12 bg-white px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3 border border-brandPink/10 transform rotate-3">
-                <div class="bg-brandPink/10 p-2 rounded-full text-brandPink text-xl">
+            <div class="absolute -bottom-2 sm:bottom-2 right-4 sm:right-10 bg-white px-4 py-2.5 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl flex items-center gap-2 sm:gap-3 border border-brandPink/10 transform rotate-3 scale-90 sm:scale-100">
+                <div class="bg-brandPink/10 p-2 rounded-full text-brandPink text-base sm:text-xl">
                     <i class="fa-solid fa-cake-candles"></i>
                 </div>
-                <div>
-                    <p class="text-xs text-brandBrown/60">Feitos à Mão</p>
-                    <p class="font-bold text-sm">100% Artesanal</p>
+                <div class="text-left">
+                    <p class="text-[10px] sm:text-xs text-brandBrown/60">Feitos à Mão</p>
+                    <p class="font-bold text-xs sm:text-sm">100% Artesanal</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Brand Highlights (Diferenciais) -->
-    <section id="diferenciais" class="bg-white py-16 border-y border-brandPink/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-xl mx-auto mb-12">
-                <h2 class="font-serif text-3xl font-bold">Por que escolher a Sweet Malu?</h2>
+    <section id="diferenciais" class="bg-white py-12 sm:py-16 border-y border-brandPink/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold">Por que escolher a Sweet Malu?</h2>
                 <div class="w-16 h-1 bg-brandPink mx-auto mt-3 rounded-full"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Card 1 -->
-                <div class="p-8 rounded-2xl bg-brandCream border border-brandPink/10 hover:shadow-xl transition-all hover:-translate-y-1">
-                    <div class="w-14 h-14 bg-brandPink/10 rounded-full flex items-center justify-center text-brandPink text-2xl mb-6">
+                <div class="p-6 sm:p-8 rounded-2xl bg-brandCream border border-brandPink/10 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brandPink/10 rounded-full flex items-center justify-center text-brandPink text-xl sm:text-2xl mb-5 sm:mb-6">
                         <i class="fa-solid fa-heart"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold mb-3">Feito com Amor</h3>
-                    <p class="text-brandBrown/70 leading-relaxed text-sm">
+                    <h3 class="font-serif text-lg sm:text-xl font-bold mb-2 sm:mb-3">Feito com Amor</h3>
+                    <p class="text-brandBrown/70 leading-relaxed text-xs sm:text-sm">
                         Cada receita é preparada do zero, respeitando os tempos de descanso e montagem para garantir a textura e umidade perfeitas.
                     </p>
                 </div>
                 <!-- Card 2 -->
-                <div class="p-8 rounded-2xl bg-brandCream border border-brandPink/10 hover:shadow-xl transition-all hover:-translate-y-1">
-                    <div class="w-14 h-14 bg-brandPink/10 rounded-full flex items-center justify-center text-brandPink text-2xl mb-6">
+                <div class="p-6 sm:p-8 rounded-2xl bg-brandCream border border-brandPink/10 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brandPink/10 rounded-full flex items-center justify-center text-brandPink text-xl sm:text-2xl mb-5 sm:mb-6">
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold mb-3">Matéria-Prima Premium</h3>
-                    <p class="text-brandBrown/70 leading-relaxed text-sm">
+                    <h3 class="font-serif text-lg sm:text-xl font-bold mb-2 sm:mb-3">Matéria-Prima Premium</h3>
+                    <p class="text-brandBrown/70 leading-relaxed text-xs sm:text-sm">
                         Utilizamos chocolates nobres, frutas frescas selecionadas uma a uma e manteiga de verdade. Sem gorduras hidrogenadas!
                     </p>
                 </div>
-                <!-- Card 3 -->
-                <div class="p-8 rounded-2xl bg-brandCream border border-brandPink/10 hover:shadow-xl transition-all hover:-translate-y-1">
-                    <div class="w-14 h-14 bg-brandPink/10 rounded-full flex items-center justify-center text-brandPink text-2xl mb-6">
+                <!-- Card 3 (ocupa largura cheia em telas pequenas se for ímpar, ou flui no grid) -->
+                <div class="p-6 sm:p-8 rounded-2xl bg-brandCream border border-brandPink/10 hover:shadow-xl transition-all hover:-translate-y-1 sm:col-span-2 md:col-span-1">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brandPink/10 rounded-full flex items-center justify-center text-brandPink text-xl sm:text-2xl mb-5 sm:mb-6">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold mb-3">Design Exclusivo</h3>
-                    <p class="text-brandBrown/70 leading-relaxed text-sm">
+                    <h3 class="font-serif text-lg sm:text-xl font-bold mb-2 sm:mb-3">Design Exclusivo</h3>
+                    <p class="text-brandBrown/70 leading-relaxed text-xs sm:text-sm">
                         O bolo dos seus sonhos do jeito que você planejou. Criamos designs delicados e modernos que encantam os olhos antes do paladar.
                     </p>
                 </div>
@@ -159,32 +175,33 @@
     </section>
 
     <!-- Catalog (Cardápio de Bolos com Valores) -->
-    <section id="cardapio" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="text-center max-w-xl mx-auto mb-16">
-            <span class="text-brandPink font-bold tracking-wider uppercase text-sm">Nosso Portfólio</span>
-            <h2 class="font-serif text-4xl font-bold mt-2">Destaques do Cardápio</h2>
-            <div class="w-16 h-1 bg-brandPink mx-auto mt-4 rounded-full"></div>
-            <p class="text-brandBrown/70 mt-4">Conheça nossos modelos mais queridos e pedidos para datas comemorativas.</p>
+    <section id="cardapio" class="py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-12 sm:mb-16">
+            <span class="text-brandPink font-bold tracking-wider uppercase text-xs sm:text-sm">Nosso Portfólio</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Destaques do Cardápio</h2>
+            <div class="w-16 h-1 bg-brandPink mx-auto mt-3 rounded-full"></div>
+            <p class="text-brandBrown/70 mt-3 text-sm sm:text-base">Conheça nossos modelos mais queridos e pedidos para datas comemorativas.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Layout fluido de colunas: 1 em cel, 2 em tablet, 4 em desktop -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <!-- Bolo 1 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-brandPink/10 hover:shadow-2xl transition-all flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="Imagens/bolochocolate.jpg" alt="Bolo Chocolatudo" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    <span class="absolute top-4 right-4 bg-brandPink text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase">Mais Pedido</span>
+                <div class="relative h-56 sm:h-64 overflow-hidden bg-gray-100">
+                    <img src="Imagens/bolochocolate.jpg" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80'" alt="Bolo Chocolatudo" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    <span class="absolute top-4 right-4 bg-brandPink text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full uppercase">Mais Pedido</span>
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
                     <div>
-                        <h3 class="font-serif text-lg font-bold text-brandBrown mb-2">Bolo Chocolatudo com Morango</h3>
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-brandBrown mb-1.5">Bolo Chocolatudo com Morango</h3>
                         <p class="text-xs text-brandBrown/60 mb-4 line-clamp-2">Massa fofinha de cacau black, recheio duplo de ganache belga cremoso e fartas camadas de morangos silvestres frescos.</p>
                     </div>
                     <div>
                         <div class="flex items-baseline justify-between mb-4 border-t border-brandPink/10 pt-4">
                             <span class="text-xs text-brandBrown/60">Preço (Kg):</span>
-                            <span class="font-bold text-lg text-brandPink">R$ 130,00</span>
+                            <span class="font-bold text-base sm:text-lg text-brandPink">R$ 130,00</span>
                         </div>
-                        <button onclick="abrirEncomenda('Bolo Chocolatudo com Morango', 130)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-semibold py-2 rounded-xl transition-all text-sm">
+                        <button onclick="abrirEncomenda('Bolo Chocolatudo com Morango', 130)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-bold py-2.5 rounded-xl transition-all text-xs sm:text-sm">
                             Fazer Pedido
                         </button>
                     </div>
@@ -193,21 +210,21 @@
 
             <!-- Bolo 2 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-brandPink/10 hover:shadow-2xl transition-all flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="Imagens/bolo1.jpg" alt="Bolo Supremo" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    <span class="absolute top-4 right-4 bg-brandGold text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase">Premium</span>
+                <div class="relative h-56 sm:h-64 overflow-hidden bg-gray-100">
+                    <img src="Imagens/bolo1.jpg" onerror="this.src='https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=80'" alt="Bolo Supremo" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    <span class="absolute top-4 right-4 bg-brandGold text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full uppercase">Premium</span>
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
                     <div>
-                        <h3 class="font-serif text-lg font-bold text-brandBrown mb-2">Bolo Supremo de Chocolate</h3>
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-brandBrown mb-1.5">Bolo Supremo de Chocolate</h3>
                         <p class="text-xs text-brandBrown/60 mb-4 line-clamp-2">Três texturas diferentes de chocolate nobre: brigadeiro trufado tradicional, ganache aerado e cobertura espelhada.</p>
                     </div>
                     <div>
                         <div class="flex items-baseline justify-between mb-4 border-t border-brandPink/10 pt-4">
                             <span class="text-xs text-brandBrown/60">Preço (Kg):</span>
-                            <span class="font-bold text-lg text-brandPink">R$ 145,00</span>
+                            <span class="font-bold text-base sm:text-lg text-brandPink">R$ 145,00</span>
                         </div>
-                        <button onclick="abrirEncomenda('Bolo Supremo de Chocolate', 145)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-semibold py-2 rounded-xl transition-all text-sm">
+                        <button onclick="abrirEncomenda('Bolo Supremo de Chocolate', 145)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-bold py-2.5 rounded-xl transition-all text-xs sm:text-sm">
                             Fazer Pedido
                         </button>
                     </div>
@@ -216,20 +233,20 @@
 
             <!-- Bolo 3 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-brandPink/10 hover:shadow-2xl transition-all flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="Imagens/bolo3.jpg" alt="Naked Cake" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                <div class="relative h-56 sm:h-64 overflow-hidden bg-gray-100">
+                    <img src="Imagens/bolo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c13636?w=500&auto=format&fit=crop&q=80'" alt="Naked Cake" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
                     <div>
-                        <h3 class="font-serif text-lg font-bold text-brandBrown mb-2">Naked Cake Frutas Vermelhas</h3>
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-brandBrown mb-1.5">Naked Cake Frutas Vermelhas</h3>
                         <p class="text-xs text-brandBrown/60 mb-4 line-clamp-2">A combinação perfeita de massa amanteigada de baunilha, creme suave de mascarpone, amoras, mirtilos e framboesas.</p>
                     </div>
                     <div>
                         <div class="flex items-baseline justify-between mb-4 border-t border-brandPink/10 pt-4">
                             <span class="text-xs text-brandBrown/60">Preço (Kg):</span>
-                            <span class="font-bold text-lg text-brandPink">R$ 150,00</span>
+                            <span class="font-bold text-base sm:text-lg text-brandPink">R$ 150,00</span>
                         </div>
-                        <button onclick="abrirEncomenda('Naked Cake Frutas Vermelhas', 150)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-semibold py-2 rounded-xl transition-all text-sm">
+                        <button onclick="abrirEncomenda('Naked Cake Frutas Vermelhas', 150)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-bold py-2.5 rounded-xl transition-all text-xs sm:text-sm">
                             Fazer Pedido
                         </button>
                     </div>
@@ -238,20 +255,20 @@
 
             <!-- Bolo 4 -->
             <div class="bg-white rounded-3xl overflow-hidden border border-brandPink/10 hover:shadow-2xl transition-all flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="Imagens/bolo2.jpg" alt="Bolo Vulcão" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                <div class="relative h-56 sm:h-64 overflow-hidden bg-gray-100">
+                    <img src="Imagens/bolo2.jpg" onerror="this.src='https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=500&auto=format&fit=crop&q=80'" alt="Bolo Vulcão" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
                     <div>
-                        <h3 class="font-serif text-lg font-bold text-brandBrown mb-2">Bolo de Festas Red Velvet</h3>
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-brandBrown mb-1.5">Bolo de Festas Red Velvet</h3>
                         <p class="text-xs text-brandBrown/60 mb-4 line-clamp-2">Incrível massa aveludada cor vermelha, com suave toque de cacau e o clássico creme de cream cheese doce com limão.</p>
                     </div>
                     <div>
                         <div class="flex items-baseline justify-between mb-4 border-t border-brandPink/10 pt-4">
                             <span class="text-xs text-brandBrown/60">Preço (Kg):</span>
-                            <span class="font-bold text-lg text-brandPink">R$ 135,00</span>
+                            <span class="font-bold text-base sm:text-lg text-brandPink">R$ 135,00</span>
                         </div>
-                        <button onclick="abrirEncomenda('Bolo de Festas Red Velvet', 135)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-semibold py-2 rounded-xl transition-all text-sm">
+                        <button onclick="abrirEncomenda('Bolo de Festas Red Velvet', 135)" class="w-full bg-brandCream hover:bg-brandPink hover:text-white text-brandBrown border border-brandPink/20 hover:border-brandPink font-bold py-2.5 rounded-xl transition-all text-xs sm:text-sm">
                             Fazer Pedido
                         </button>
                     </div>
@@ -261,21 +278,21 @@
     </section>
 
     <!-- Interactive Builder / Simulador de Preços (Monte seu Bolo) -->
-    <section id="simulador" class="bg-brandPink/5 py-20 px-6 border-t border-b border-brandPink/10">
+    <section id="simulador" class="bg-brandPink/5 py-16 sm:py-20 px-4 sm:px-6 border-t border-b border-brandPink/10">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="text-brandPink font-bold tracking-wider uppercase text-sm">Personalize à sua maneira</span>
-                <h2 class="font-serif text-4xl font-bold mt-2">Simulador de Encomendas</h2>
-                <div class="w-16 h-1 bg-brandPink mx-auto mt-4 rounded-full"></div>
-                <p class="text-brandBrown/70 mt-4">Escolha as opções abaixo para estimar em tempo real o valor do bolo dos seus sonhos.</p>
+            <div class="text-center mb-10 sm:mb-12">
+                <span class="text-brandPink font-bold tracking-wider uppercase text-xs sm:text-sm">Personalize à sua maneira</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Simulador de Encomendas</h2>
+                <div class="w-16 h-1 bg-brandPink mx-auto mt-3 rounded-full"></div>
+                <p class="text-brandBrown/70 mt-3 text-sm sm:text-base">Escolha as opções abaixo para estimar em tempo real o valor do bolo dos seus sonhos.</p>
             </div>
 
-            <div class="bg-white p-8 md:p-12 rounded-3xl border border-brandPink/10 shadow-xl grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="bg-white p-5 sm:p-8 md:p-12 rounded-3xl border border-brandPink/10 shadow-xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                 <!-- Configurator -->
-                <div class="space-y-6">
+                <div class="space-y-5 sm:space-y-6">
                     <div>
-                        <label class="block text-sm font-bold uppercase tracking-wider text-brandBrown/70 mb-2">1. Selecione o Tamanho:</label>
-                        <select id="tamanho" onchange="calcularOrcamento()" class="w-full p-4 rounded-xl border border-brandPink/20 text-brandBrown font-medium focus:ring-2 focus:ring-brandPink focus:border-transparent outline-none transition-all">
+                        <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-brandBrown/70 mb-2">1. Selecione o Tamanho:</label>
+                        <select id="tamanho" onchange="calcularOrcamento()" class="w-full p-3.5 sm:p-4 rounded-xl border border-brandPink/20 text-brandBrown font-medium focus:ring-2 focus:ring-brandPink focus:border-transparent outline-none transition-all text-sm sm:text-base bg-white">
                             <option value="1.5" data-desc="Pequeno (Rende ~15 fatias) - 1.5kg">Pequeno (1.5 kg) - serve ~15 pessoas</option>
                             <option value="2.5" data-desc="Médio (Rende ~25 fatias) - 2.5kg" selected>Médio (2.5 kg) - serve ~25 pessoas</option>
                             <option value="3.5" data-desc="Grande (Rende ~35 fatias) - 3.5kg">Grande (3.5 kg) - serve ~35 pessoas</option>
@@ -284,8 +301,8 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold uppercase tracking-wider text-brandBrown/70 mb-2">2. Sabor da Massa:</label>
-                        <select id="massa" onchange="calcularOrcamento()" class="w-full p-4 rounded-xl border border-brandPink/20 text-brandBrown font-medium focus:ring-2 focus:ring-brandPink focus:border-transparent outline-none transition-all">
+                        <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-brandBrown/70 mb-2">2. Sabor da Massa:</label>
+                        <select id="massa" onchange="calcularOrcamento()" class="w-full p-3.5 sm:p-4 rounded-xl border border-brandPink/20 text-brandBrown font-medium focus:ring-2 focus:ring-brandPink focus:border-transparent outline-none transition-all text-sm sm:text-base bg-white">
                             <option value="0">Baunilha Amanteigada (Tradicional)</option>
                             <option value="5">Chocolate Belga Intense (+ R$ 5,00/kg)</option>
                             <option value="10">Red Velvet Exclusivo (+ R$ 10,00/kg)</option>
@@ -293,8 +310,8 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold uppercase tracking-wider text-brandBrown/70 mb-2">3. Recheio Principal:</label>
-                        <select id="recheio" onchange="calcularOrcamento()" class="w-full p-4 rounded-xl border border-brandPink/20 text-brandBrown font-medium focus:ring-2 focus:ring-brandPink focus:border-transparent outline-none transition-all">
+                        <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-brandBrown/70 mb-2">3. Recheio Principal:</label>
+                        <select id="recheio" onchange="calcularOrcamento()" class="w-full p-3.5 sm:p-4 rounded-xl border border-brandPink/20 text-brandBrown font-medium focus:ring-2 focus:ring-brandPink focus:border-transparent outline-none transition-all text-sm sm:text-base bg-white">
                             <option value="110">Brigadeiro Gourmet ao Leite - R$ 110,00/kg</option>
                             <option value="125" selected>Ninho Trufado com Morangos - R$ 125,00/kg</option>
                             <option value="135">Quatro Leites com Geléia de Frutas Vermelhas - R$ 135,00/kg</option>
@@ -304,23 +321,23 @@
                 </div>
 
                 <!-- Live Quote Output -->
-                <div class="bg-brandCream p-8 rounded-2xl flex flex-col justify-between border border-brandPink/10">
+                <div class="bg-brandCream p-6 sm:p-8 rounded-2xl flex flex-col justify-between border border-brandPink/10">
                     <div class="space-y-4">
-                        <h4 class="font-serif text-xl font-bold border-b border-brandPink/20 pb-4">Resumo da Encomenda</h4>
-                        <div class="text-sm space-y-2 text-brandBrown/80">
-                            <p class="flex justify-between"><span>Peso estimado:</span> <span id="resumo-peso" class="font-bold">2.5 kg</span></p>
-                            <p class="flex justify-between"><span>Sabor da massa:</span> <span id="resumo-massa" class="font-bold">Amanteigada</span></p>
-                            <p class="flex justify-between"><span>Recheio:</span> <span id="resumo-recheio" class="font-bold">Ninho com Morangos</span></p>
+                        <h4 class="font-serif text-lg sm:text-xl font-bold border-b border-brandPink/20 pb-3">Resumo da Encomenda</h4>
+                        <div class="text-xs sm:text-sm space-y-2.5 text-brandBrown/80">
+                            <p class="flex justify-between gap-4"><span>Peso estimado:</span> <span id="resumo-peso" class="font-bold text-right">2.5 kg</span></p>
+                            <p class="flex justify-between gap-4"><span>Sabor da massa:</span> <span id="resumo-massa" class="font-bold text-right">Amanteigada</span></p>
+                            <p class="flex justify-between gap-4"><span>Recheio:</span> <span id="resumo-recheio" class="font-bold text-right">Ninho com Morangos</span></p>
                         </div>
                     </div>
                     
-                    <div class="mt-8 border-t border-brandPink/20 pt-6">
-                        <div class="flex items-baseline justify-between mb-6">
-                            <span class="text-sm font-bold uppercase tracking-wider text-brandBrown/70">Preço Estimado:</span>
-                            <span id="valor-total" class="font-serif text-4xl font-bold text-brandPink">R$ 312,50</span>
+                    <div class="mt-6 sm:mt-8 border-t border-brandPink/20 pt-5 sm:pt-6">
+                        <div class="flex items-baseline justify-between gap-4 mb-5 sm:mb-6">
+                            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-brandBrown/70">Preço Estimado:</span>
+                            <span id="valor-total" class="font-serif text-3xl sm:text-4xl font-bold text-brandPink">R$ 312,50</span>
                         </div>
-                        <button onclick="enviarMensagemZap()" class="w-full bg-brandPink hover:bg-brandPinkDark text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brandPink/20">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <button onclick="enviarMensagemZap()" class="w-full bg-brandPink hover:bg-brandPinkDark text-white font-bold py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2.5 sm:gap-3 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brandPink/20 text-sm sm:text-base">
+                            <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i>
                             Solicitar via WhatsApp
                         </button>
                     </div>
@@ -330,57 +347,57 @@
     </section>
 
     <!-- About Section -->
-    <section id="sobre" class="py-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-        <div class="flex-1">
+    <section id="sobre" class="py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div class="flex-1 w-full max-w-xs sm:max-w-md md:max-w-none">
             <div class="relative">
-                <img src="Imagens/Luiza.enc" alt="Doceira Malu finalizando um bolo" class="rounded-[40px] border-4 border-white shadow-2xl w-full max-w-md mx-auto aspect-square object-cover">
-                <!-- Little absolute badge -->
-                <div class="absolute -top-6 -left-6 bg-brandPink text-white w-24 h-24 rounded-full flex flex-col items-center justify-center font-serif transform -rotate-12 shadow-xl">
-                    <span class="font-bold text-2xl">Desde</span>
-                    <span class="text-xs">2020</span>
+                <img src="Imagens/Luiza.enc" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop&q=80'" alt="Doceira Malu finalizando um bolo" class="rounded-[30px] sm:rounded-[40px] border-4 border-white shadow-2xl w-full max-w-md mx-auto aspect-square object-cover">
+                <!-- Absolute badge -->
+                <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 bg-brandPink text-white w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-serif transform -rotate-12 shadow-xl">
+                    <span class="font-bold text-lg sm:text-2xl">Desde</span>
+                    <span class="text-[10px] sm:text-xs">2020</span>
                 </div>
             </div>
         </div>
-        <div class="flex-1 space-y-6">
-            <span class="text-brandPink font-bold uppercase tracking-wider text-sm">Quem Faz do Coração</span>
-            <h2 class="font-serif text-4xl font-bold">Conheça a Malu</h2>
-            <div class="w-16 h-1 bg-brandPink rounded-full"></div>
-            <p class="text-brandBrown/80 leading-relaxed text-base">
+        <div class="flex-1 space-y-5 sm:space-y-6 text-center md:text-left">
+            <span class="text-brandPink font-bold uppercase tracking-wider text-xs sm:text-sm">Quem Faz do Coração</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold">Conheça a Malu</h2>
+            <div class="w-16 h-1 bg-brandPink rounded-full mx-auto md:mx-0"></div>
+            <p class="text-sm sm:text-base text-brandBrown/80 leading-relaxed">
                 A paixão pelos doces começou em família. Malu cresceu observando a avó bater pães de ló generosos nas tardes de domingo, aprendendo os segredos de massas macias e recheios saborosos desde muito pequena.
             </p>
-            <p class="text-brandBrown/80 leading-relaxed text-base">
+            <p class="text-sm sm:text-base text-brandBrown/80 leading-relaxed">
                 Em 2020, o amor transformou-se em negócio. Hoje, a Sweet Malu é especialista em criar bolos artísticos recheados com os sabores clássicos da nossa infância, mas com um toque refinado da confeitaria moderna.
             </p>
-            <div class="pt-4 flex items-center gap-4">
-                <div class="w-12 h-12 bg-brandPink/15 rounded-full flex items-center justify-center text-brandPink text-xl">
+            <div class="pt-2 flex items-center gap-4 justify-center md:justify-start">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-brandPink/15 rounded-full flex items-center justify-center text-brandPink text-lg sm:text-xl flex-shrink-0">
                     <i class="fa-solid fa-cookie-bite"></i>
                 </div>
-                <div>
-                    <h5 class="font-bold">Capricho Máximo</h5>
-                    <p class="text-xs text-brandBrown/60">Amor em cada colherada de brigadeiro.</p>
+                <div class="text-left">
+                    <h5 class="font-bold text-sm sm:text-base">Capricho Máximo</h5>
+                    <p class="text-[11px] sm:text-xs text-brandBrown/60">Amor em cada colherada de brigadeiro.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brandBrown text-brandCream py-16 px-6 border-t-8 border-brandPink">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer class="bg-brandBrown text-brandCream py-12 sm:py-16 px-4 sm:px-6 border-t-8 border-brandPink">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
             <!-- Brand Column -->
-            <div class="space-y-4">
-                <a href="#" class="flex items-center gap-3">
-                    <img src="watermarked_img_16597281687381795312.png" alt="Sweet Malu Logo" class="h-10 w-10 rounded-full border border-brandPink/30 object-cover">
+            <div class="space-y-4 text-center sm:text-left">
+                <a href="#" class="flex items-center justify-center sm:justify-start gap-3">
+                    <img src="Imagens/LogoDoceria.png" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=150&auto=format&fit=crop&q=60'" alt="Sweet Malu Logo" class="h-10 w-10 rounded-full border border-brandPink/30 object-cover">
                     <span class="font-serif text-2xl font-bold tracking-tight text-white">Sweet <span class="text-brandPink">Malu</span></span>
                 </a>
-                <p class="text-sm text-brandCream/75 leading-relaxed">
+                <p class="text-xs sm:text-sm text-brandCream/75 leading-relaxed">
                     Sua vida merece um toque extra de carinho e doçura. Venha planejar o bolo perfeito com a gente.
                 </p>
             </div>
             
             <!-- Quick Links -->
-            <div>
-                <h4 class="font-serif text-lg font-bold text-brandPink mb-4">Navegação</h4>
-                <ul class="space-y-2 text-sm text-brandCream/80">
+            <div class="text-center sm:text-left">
+                <h4 class="font-serif text-base sm:text-lg font-bold text-brandPink mb-3 sm:mb-4">Navegação</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-brandCream/80">
                     <li><a href="#inicio" class="hover:text-white transition-colors">Início</a></li>
                     <li><a href="#diferenciais" class="hover:text-white transition-colors">Diferenciais</a></li>
                     <li><a href="#cardapio" class="hover:text-white transition-colors">Cardápio de Bolos</a></li>
@@ -389,9 +406,9 @@
             </div>
 
             <!-- Shop Info -->
-            <div>
-                <h4 class="font-serif text-lg font-bold text-brandPink mb-4">Funcionamento</h4>
-                <p class="text-sm text-brandCream/80 leading-relaxed">
+            <div class="text-center sm:text-left">
+                <h4 class="font-serif text-base sm:text-lg font-bold text-brandPink mb-3 sm:mb-4">Funcionamento</h4>
+                <p class="text-xs sm:text-sm text-brandCream/80 leading-relaxed">
                     Terça a Sábado: 09h às 18h<br>
                     Domingo: 09h às 13h (Apenas retirada)<br>
                     *Necessário agendamento prévio de até 48h para bolos especiais.
@@ -399,49 +416,50 @@
             </div>
 
             <!-- Contact -->
-            <div>
-                <h4 class="font-serif text-lg font-bold text-brandPink mb-4">Fale Conosco</h4>
-                <p class="text-sm text-brandCream/80 leading-relaxed mb-4">
-                    <i class="fa-solid fa-location-dot text-brandPink mr-2"></i> Rua das Rosas, 123 - Bairro Doce, Cabo Frio/RJ<br>
-                    <i class="fa-brands fa-whatsapp text-brandPink mr-2"></i> (22) 99999-8888
+            <div class="text-center sm:text-left">
+                <h4 class="font-serif text-base sm:text-lg font-bold text-brandPink mb-3 sm:mb-4">Fale Conosco</h4>
+                <p class="text-xs sm:text-sm text-brandCream/80 leading-relaxed mb-4">
+                    <span class="block sm:inline mb-2 sm:mb-0"><i class="fa-solid fa-location-dot text-brandPink mr-1"></i> Rua das Rosas, 123 - Cabo Frio/RJ</span><br class="hidden sm:inline">
+                    <span class="block"><i class="fa-brands fa-whatsapp text-brandPink mr-1"></i> (22) 99999-8888</span>
                 </p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brandPink rounded-full flex items-center justify-center transition-all text-white"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brandPink rounded-full flex items-center justify-center transition-all text-white"><i class="fa-brands fa-facebook"></i></a>
+                <div class="flex gap-3 justify-center sm:justify-start">
+                    <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brandPink rounded-full flex items-center justify-center transition-all text-white text-sm" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brandPink rounded-full flex items-center justify-center transition-all text-white text-sm" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto border-t border-white/10 mt-12 pt-6 text-center text-xs text-brandCream/50">
+        <div class="max-w-7xl mx-auto border-t border-white/10 mt-10 sm:mt-12 pt-6 text-center text-[10px] sm:text-xs text-brandCream/50">
             <p>&copy; 2026 Sweet Malu Doceria. Todos os direitos reservados. Desenvolvido com carinho.</p>
         </div>
     </footer>
 
-    <!-- Modal para pedido direto do catálogo -->
-    <div id="modal-pedido" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all">
-        <div class="bg-white rounded-3xl w-full max-w-md p-8 relative border border-brandPink/10">
-            <button onclick="fecharModal()" class="absolute top-4 right-4 text-brandBrown hover:text-brandPink text-xl p-2">
+    <!-- Modal para pedido direto do catálogo (Ajustado para scroll móvel) -->
+    <div id="modal-pedido" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all overflow-y-auto">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 sm:p-8 relative border border-brandPink/10 max-h-[95vh] overflow-y-auto my-auto shadow-2xl">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 text-brandBrown hover:text-brandPink text-xl p-2 focus:outline-none" aria-label="Fechar modal">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <h3 class="font-serif text-2xl font-bold mb-4" id="modal-bolo-nome">Fazer Pedido</h3>
-            <p class="text-sm text-brandBrown/80 mb-6">Você selecionou o nosso maravilhoso <span class="font-bold text-brandPink" id="modal-bolo-destaque">Bolo</span>. Escolha o tamanho abaixo para enviar o pedido direto para o nosso WhatsApp:</p>
+            
+            <h3 class="font-serif text-xl sm:text-2xl font-bold mb-3 sm:mb-4 pr-6" id="modal-bolo-nome">Fazer Pedido</h3>
+            <p class="text-xs sm:text-sm text-brandBrown/80 mb-5 sm:mb-6">Você selecionou o nosso maravilhoso <span class="font-bold text-brandPink" id="modal-bolo-destaque">Bolo</span>. Escolha o tamanho abaixo para enviar o pedido direto para o nosso WhatsApp:</p>
             
             <input type="hidden" id="modal-bolo-preco-kg" value="0">
             
-            <div class="space-y-4 mb-6">
-                <label class="block text-xs font-bold uppercase tracking-wider text-brandBrown/70">Escolha a quantidade/peso:</label>
+            <div class="space-y-3 mb-5 sm:mb-6">
+                <label class="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-brandBrown/70">Escolha a quantidade/peso:</label>
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="selecionarPesoModal(1.5)" id="btn-peso-1-5" class="border-2 border-brandPink bg-brandPink text-white font-bold py-2.5 rounded-xl text-sm transition-all">1.5 Kg</button>
-                    <button onclick="selecionarPesoModal(2.5)" id="btn-peso-2-5" class="border border-brandPink/20 text-brandBrown font-bold py-2.5 rounded-xl text-sm hover:border-brandPink transition-all">2.5 Kg</button>
-                    <button onclick="selecionarPesoModal(3.5)" id="btn-peso-3-5" class="border border-brandPink/20 text-brandBrown font-bold py-2.5 rounded-xl text-sm hover:border-brandPink transition-all">3.5 Kg</button>
+                    <button onclick="selecionarPesoModal(1.5)" id="btn-peso-1-5" class="border-2 border-brandPink bg-brandPink text-white font-bold py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm transition-all focus:outline-none">1.5 Kg</button>
+                    <button onclick="selecionarPesoModal(2.5)" id="btn-peso-2-5" class="border border-brandPink/20 text-brandBrown font-bold py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm hover:border-brandPink transition-all focus:outline-none">2.5 Kg</button>
+                    <button onclick="selecionarPesoModal(3.5)" id="btn-peso-3-5" class="border border-brandPink/20 text-brandBrown font-bold py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm hover:border-brandPink transition-all focus:outline-none">3.5 Kg</button>
                 </div>
             </div>
 
-            <div class="flex items-center justify-between p-4 bg-brandCream rounded-xl border border-brandPink/10 mb-6">
-                <span class="text-xs font-bold text-brandBrown/70 uppercase">Total Estimado:</span>
-                <span id="modal-preco-final" class="font-serif text-3xl font-bold text-brandPink">R$ 0,00</span>
+            <div class="flex items-center justify-between p-3.5 sm:p-4 bg-brandCream rounded-xl border border-brandPink/10 mb-5 sm:mb-6">
+                <span class="text-[10px] sm:text-xs font-bold text-brandBrown/70 uppercase">Total Estimado:</span>
+                <span id="modal-preco-final" class="font-serif text-2xl sm:text-3xl font-bold text-brandPink">R$ 0,00</span>
             </div>
 
-            <button onclick="enviarPedidoModal()" class="w-full bg-brandPink hover:bg-brandPinkDark text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg shadow-brandPink/20">
+            <button onclick="enviarPedidoModal()" class="w-full bg-brandPink hover:bg-brandPinkDark text-white font-bold py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2.5 sm:gap-3 transition-all shadow-lg shadow-brandPink/20 text-sm sm:text-base focus:outline-none">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
                 Confirmar via WhatsApp
             </button>
@@ -453,16 +471,32 @@
         // Variável de controle do peso no Modal
         let pesoSelecionadoModal = 1.5;
 
+        // Função para abrir/fechar o Menu Mobile de forma suave
+        function toggleMenuMobile() {
+            const menu = document.getElementById('menu-mobile');
+            const icone = document.getElementById('icone-menu');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icone.className = "fa-solid fa-xmark";
+            } else {
+                menu.classList.add('hidden');
+                icone.className = "fa-solid fa-bars";
+            }
+        }
+
         // Função para calcular preços no Simulador "Monte seu Bolo"
         function calcularOrcamento() {
             const tamanhoElem = document.getElementById('tamanho');
+            if (!tamanhoElem) return;
+            
             const peso = parseFloat(tamanhoElem.value);
             const tamanhoDesc = tamanhoElem.options[tamanhoElem.selectedIndex].getAttribute('data-desc');
             
-            const massaAdicional = parseFloat(document.getElementById('massa').value);
+            const massaAdicional = parseFloat(document.getElementById('massa').value || 0);
             
             const recheioElem = document.getElementById('recheio');
-            const recheioPrecoKg = parseFloat(recheioElem.value);
+            const recheioPrecoKg = parseFloat(recheioElem.value || 0);
             const recheioTexto = recheioElem.options[recheioElem.selectedIndex].text.split(' - ')[0];
             
             // Cálculo do preço final por Kg: recheio + adicional da massa
@@ -505,11 +539,13 @@
             
             const modal = document.getElementById('modal-pedido');
             modal.classList.add('modal-active');
+            document.body.style.overflow = 'hidden'; // impede scroll de fundo
         }
 
         function fecharModal() {
             const modal = document.getElementById('modal-pedido');
             modal.classList.remove('modal-active');
+            document.body.style.overflow = ''; // restaura scroll
         }
 
         // Atualizar o peso no modal e recalcular preco
@@ -523,10 +559,12 @@
             // Atualiza os estilos dos botões de peso
             [1.5, 2.5, 3.5].forEach(p => {
                 const btn = document.getElementById(`btn-peso-${p.toString().replace('.', '-')}`);
-                if (p === peso) {
-                    btn.className = "border-2 border-brandPink bg-brandPink text-white font-bold py-2.5 rounded-xl text-sm transition-all";
-                } else {
-                    btn.className = "border border-brandPink/20 text-brandBrown font-bold py-2.5 rounded-xl text-sm hover:border-brandPink transition-all";
+                if (btn) {
+                    if (p === peso) {
+                        btn.className = "border-2 border-brandPink bg-brandPink text-white font-bold py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm transition-all focus:outline-none";
+                    } else {
+                        btn.className = "border border-brandPink/20 text-brandBrown font-bold py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm hover:border-brandPink transition-all focus:outline-none";
+                    }
                 }
             });
         }
